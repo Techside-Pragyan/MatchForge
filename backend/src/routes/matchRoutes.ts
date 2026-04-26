@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { getFeed, swipe } from '../controllers/matchController';
-import { protect } from '../middleware/authMiddleware';
+import { getFeed, swipe } from '../controllers/matchController.js';
+import { protect } from '../middleware/authMiddleware.js';
 
 const router = Router();
 

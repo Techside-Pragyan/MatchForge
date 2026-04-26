@@ -42,14 +42,16 @@ io.on('connection', (socket) => {
 // Database connection and Server start
 mongoose.connect(MONGO_URI)
   .then(() => {
-    console.log('Connected to MongoDB');
-    server.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
+    console.log('✅ Connected to MongoDB');
   })
   .catch((err) => {
-    console.error('MongoDB connection error:', err);
-    process.exit(1);
+    console.error('❌ MongoDB connection error:', err.message);
+    console.warn('⚠️ Server is running in limited mode (No Database)');
+  })
+  .finally(() => {
+    server.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
   });
 
 export { io };

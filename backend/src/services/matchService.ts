@@ -1,5 +1,5 @@
-import User, { IUser } from '../models/User';
-import Match from '../models/Match';
+import User, { type IUser } from '../models/User.js';
+import Match from '../models/Match.js';
 
 export const getPotentialMatches = async (user: IUser) => {
   const { preferences, location, _id, likes, dislikes, matches } = user;

@@ -2,10 +2,13 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Toaster } from 'react-hot-toast';
 import { useAuthStore } from './store/authStore';
 
-// Pages (to be created)
-const LoginPage = () => <div className="p-8 text-white">Login Page</div>;
+import LoginPage from './pages/LoginPage';
+import SwipePage from './pages/SwipePage';
+// import RegisterPage from './pages/RegisterPage';
+// import ChatPage from './pages/ChatPage';
+// import ProfilePage from './pages/ProfilePage';
+
 const RegisterPage = () => <div className="p-8 text-white">Register Page</div>;
-const SwipePage = () => <div className="p-8 text-white">Swipe Dashboard</div>;
 const ChatPage = () => <div className="p-8 text-white">Chat Screen</div>;
 const ProfilePage = () => <div className="p-8 text-white">Profile Setup</div>;
 

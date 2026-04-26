@@ -40,7 +40,9 @@ io.on('connection', (socket) => {
 });
 
 // Database connection and Server start
-mongoose.connect(MONGO_URI)
+mongoose.connect(MONGO_URI, {
+  serverSelectionTimeoutMS: 2000 // fail fast if no DB
+})
   .then(() => {
     console.log('✅ Connected to MongoDB');
   })

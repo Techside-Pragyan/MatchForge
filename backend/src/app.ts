@@ -5,9 +5,8 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 
 // Import routes
-// import authRoutes from './routes/authRoutes';
-// import userRoutes from './routes/userRoutes';
-// import matchRoutes from './routes/matchRoutes';
+import authRoutes from './routes/authRoutes';
+import matchRoutes from './routes/matchRoutes';
 // import chatRoutes from './routes/chatRoutes';
 
 dotenv.config();
@@ -29,10 +28,9 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Routes (to be added)
-// app.use('/api/auth', authRoutes);
-// app.use('/api/users', userRoutes);
-// app.use('/api/matches', matchRoutes);
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/matches', matchRoutes);
 // app.use('/api/chat', chatRoutes);
 
 // 404 Handler

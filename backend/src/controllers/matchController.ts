@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
-import { getPotentialMatches, handleSwipe } from '../services/matchService';
-import User from '../models/User';
+import { getPotentialMatches, handleSwipe } from '../services/matchService.js';
+import User from '../models/User.js';
 
 export const getFeed = async (req: Request, res: Response) => {
   try {

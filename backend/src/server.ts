@@ -6,6 +6,8 @@ import { Server } from 'socket.io';
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/matchforge';
 
+import { setupChatHandlers } from './socket/chatHandler';
+
 const server = http.createServer(app);
 
 // Initialize Socket.io
@@ -17,14 +19,20 @@ const io = new Server(server, {
   }
 });
 
-// Socket logic (to be moved to separate file)
+// Socket logic
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
   
+  // Join a personal room for notifications
+  socket.on('join_self', (userId) => {
+    socket.join(userId);
+  });
+
   socket.on('join_room', (roomId) => {
     socket.join(roomId);
-    console.log(`User ${socket.id} joined room ${roomId}`);
   });
+
+  setupChatHandlers(io, socket);
 
   socket.on('disconnect', () => {
     console.log('User disconnected:', socket.id);

@@ -6,101 +6,36 @@ import LoginPage from './pages/LoginPage';
 import SwipePage from './pages/SwipePage';
 import RegisterPage from './pages/RegisterPage';
 import ChatPage from './pages/ChatPage';
-// import ProfilePage from './pages/ProfilePage';
 
-const ProfilePage = () => <div className="p-8 text-white">Profile Setup</div>;
+const ProfilePage = () => (
+  <div className="min-h-screen bg-slate-950 flex items-center justify-center text-white">
+    <div className="text-center">
+      <h2 className="text-2xl font-bold mb-4">Profile Setup</h2>
+      <p className="text-slate-400">Complete your profile to start matching.</p>
+    </div>
+  </div>
+);
 
 function App() {
   const { user } = useAuthStore();
 
   return (
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    <Router>
+      <div className="min-h-screen bg-slate-900 font-sans">
+        <Toaster position="top-center" />
+        <Routes>
+          <Route path="/login" element={!user ? <LoginPage /> : <Navigate to="/" />} />
+          <Route path="/register" element={!user ? <RegisterPage /> : <Navigate to="/" />} />
+          
+          <Route path="/" element={user ? <SwipePage /> : <Navigate to="/login" />} />
+          <Route path="/chat" element={user ? <ChatPage /> : <Navigate to="/login" />} />
+          <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
+          
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;

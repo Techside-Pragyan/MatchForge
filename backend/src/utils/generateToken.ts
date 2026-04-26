@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { Response } from 'express';
+import type { Response } from 'express';
 
 export const generateTokens = (userId: string) => {
   const accessToken = jwt.sign(

@@ -5,8 +5,8 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 
 // Import routes
-import authRoutes from './routes/authRoutes';
-import matchRoutes from './routes/matchRoutes';
+import authRoutes from './routes/authRoutes.js';
+import matchRoutes from './routes/matchRoutes.js';
 // import chatRoutes from './routes/chatRoutes';
 
 dotenv.config();

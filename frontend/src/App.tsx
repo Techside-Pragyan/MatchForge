@@ -5,10 +5,9 @@ import { useAuthStore } from './store/authStore';
 import LoginPage from './pages/LoginPage';
 import SwipePage from './pages/SwipePage';
 import RegisterPage from './pages/RegisterPage';
-// import ChatPage from './pages/ChatPage';
+import ChatPage from './pages/ChatPage';
 // import ProfilePage from './pages/ProfilePage';
 
-const ChatPage = () => <div className="p-8 text-white">Chat Screen</div>;
 const ProfilePage = () => <div className="p-8 text-white">Profile Setup</div>;
 
 function App() {

@@ -1,6 +1,6 @@
 import { Server, Socket } from 'socket.io';
-import Message from '../models/Message';
-import Match from '../models/Match';
+import Message from '../models/Message.js';
+import Match from '../models/Match.js';
 
 export const setupChatHandlers = (io: Server, socket: Socket) => {
   socket.on('send_message', async (data) => {
